@@ -1,0 +1,53 @@
+//gallery
+@mixin gallery-grid($min: 250px, $gap: 1rem) {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax($min, 1fr));
+    gap: $gap;
+}
+
+@mixin img-cover {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+@mixin hover-zoom($scale: 1.1, $time: 0.3s) {
+    overflow: hidden;
+    border-radius: 15px;
+
+    img {
+        transition: transform $time ease;
+    }
+
+    &:hover img {
+        transform: scale($scale);
+    }
+}
+
+@mixin card($radius: 12px, $shadow: 0 4px 10px rgba(0, 0, 0, 0.1)) {
+    border-radius: $radius;
+    box-shadow: $shadow;
+    overflow: hidden;
+}
+
+$breakpoints: (
+    'xs':  320px,
+    'sm':  576px,
+    'md':  768px,
+    'lg':  992px,
+    'xl':  1200px,
+    'xxl': 1400px,
+);
+
+@mixin min-width($breakpoint) {
+    @if map-has-key($breakpoints, $breakpoint) {
+        @media (min-width: map-get($breakpoints, $breakpoint)) {
+            @content;
+        }
+    } @else {
+        @media (min-width: $breakpoint) {
+            @content;
+        }
+    }
+}

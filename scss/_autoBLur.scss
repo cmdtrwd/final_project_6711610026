@@ -1,0 +1,106 @@
+@use 'variables' as *;
+
+.loy-section {
+    padding: 4rem 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 1.5rem;
+    height: auto;
+    overflow: visible;
+
+    .loy-title {
+        font-size: 2rem;
+        letter-spacing: 0.3em;
+        color: $secondary-color;
+        writing-mode: vertical-rl;
+    }
+}
+
+.autoBLur {
+    font-size: clamp(1.5rem, 8vw, 5rem); //clamp คือกำหนดขนาดแบบยืดหยุ่นตามหน้าจอ
+    font-weight: 700;
+    color: $secondary-color;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    cursor: pointer;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    opacity: 0.5;
+    width: auto;
+    writing-mode: vertical-rl;
+    white-space: normal;
+
+    //กำหนดขนาดของความสูงtext 
+    &:nth-child(2) {
+        margin-top: 200px;
+    }
+
+    &:nth-child(3) {
+        margin-top: 0;
+    }
+
+    &:nth-child(4) {
+        margin-top: 70px;
+    }
+
+    &:nth-child(5) {
+        margin-top: 120px;
+    }
+
+    &:hover {
+        opacity: 1;
+    }
+}
+
+@media (min-width: 768px) {
+    .loy-section {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 3rem;
+
+        .loy-title {
+            writing-mode: vertical-rl;
+        }
+    }
+
+    .autoBLur {
+        writing-mode: vertical-rl; //แนวตั้ง 
+        white-space: nowrap;
+
+        &:nth-child(2) {
+            margin-top: 0px;
+        }
+
+        &:nth-child(3) {
+            margin-top: 120px;
+        }
+
+        &:nth-child(4) {
+            margin-top: 50px;
+        }
+
+        &:nth-child(5) {
+            margin-top: 170px;
+        }
+    }
+}
+
+.loy-section:hover .autoBLur:not(:hover) {
+    opacity: 0.2;
+}
+
+.autoBLur {
+    animation: autoBLurAnimation both;
+    animation-timeline: view(50% auto);
+}
+
+@keyframes autoBLurAnimation {
+    from {
+        filter: blur(20px);
+    }
+
+    to {
+        filter: blur(0);
+    }
+}

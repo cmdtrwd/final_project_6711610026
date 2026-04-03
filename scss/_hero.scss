@@ -1,0 +1,106 @@
+@use 'variables' as *;
+
+body {
+    font-family: $font-body;
+    font-weight: 400;
+    overflow-y: auto;
+}
+
+.hero {
+    position: relative;
+    width: 100%;
+    height: 30vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &__video-wrap,
+    &__img-wrap {
+        position: absolute;
+        inset: 0;
+    }
+
+    &__video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    &__overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.45);
+    }
+
+    &__content {
+        position: relative;
+        z-index: 1;
+        text-align: center;
+        color: white;
+        padding: 1rem; 
+    }
+
+    &__title {
+        font-size: clamp(2rem, 5vw, 4rem);
+        font-weight: 800;
+        letter-spacing: 0.05em;
+        margin-bottom: 1rem;
+    }
+
+    &__subtitle {
+        font-size: clamp(0.9rem, 2vw, 1.1rem);
+        max-width: 500px;
+        margin: 1rem; 
+        opacity: 0.85;
+        line-height: 1.6;
+    }
+
+    &__buttons {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    
+    @media (min-width: 768px) {
+        height: 85vh;
+
+        &__content {
+            padding: 2rem;
+        }
+
+        &__subtitle {
+            margin: 2rem;
+        }
+    }
+}
+
+.hero__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    // object-position: center;
+    display: block;
+    object-position: center top;
+}
+
+.btn {
+    padding: 0.7rem 1.8rem;
+    border-radius: 999px;
+    font-size: 0.95rem;
+    cursor: pointer;
+    background: $secondary-color;
+    color: black;
+
+    &--outline {
+        color: black;
+
+        &:hover {
+            background: $secondary-color;
+            color: black;
+            box-shadow: 0 0 15px $secondary-color;
+        }
+    }
+}

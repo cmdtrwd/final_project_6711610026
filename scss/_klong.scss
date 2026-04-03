@@ -1,0 +1,86 @@
+@use 'mixin' as m;
+@use 'variables' as *;
+
+.klong-section {
+    padding: 4rem 2rem;
+
+    .klong-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 2rem 2rem;
+
+        @include m.min-width('md') {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    .klong-card {
+        background: $secondary-color;
+        border-radius: 8px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+        opacity: 0;
+        transform: translateX(-60px);
+        transition: transform 0.5s ease, box-shadow 0.3s ease, opacity 0.5s ease;
+
+        &:nth-child(1) {
+            transition-delay: 0s;
+        }
+
+        &:nth-child(2) {
+            transition-delay: 0.15s;
+        }
+
+        &:nth-child(3) {
+            transition-delay: 0.3s;
+        }
+
+        &.show {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        &:hover {
+
+            transform: translateY(-5px);
+
+        }
+
+        img {
+            aspect-ratio: 4/4;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+
+            &:hover {
+
+                transform: scale(1.1);
+
+            }
+        }
+
+        .klong-body {
+            padding: 1.2rem;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+
+            h1 {
+                text-align: left;
+                font-weight: 600;
+            }
+        }
+    }
+
+    .klong-card.show {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+}
